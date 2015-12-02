@@ -1,0 +1,14 @@
+<resources>
+
+    <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <!-- <item name="android:windowIsTranslucent">true</item> -->
+    </style>
+
+    <style name="transparentFrameWindowStyle" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/dialog_shape</item>
+        <item name="android:windowFrame">@null</item>
+        <!-- 除去title -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+</resources>

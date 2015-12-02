@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeAllMask"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault"
+    android:canRetrieveWindowContent="true"
+    android:description="@string/desc"
+    android:notificationTimeout="100"
+    android:packageNames="com.tencent.mm" />
+
+    
+    
+    <!-- 这个是用来设置响应事件的类型，typeAllMask当然就是响应所有类型的事件了。当然还有单击、长按、滑动等 -->
+    <!-- android:accessibilityEventTypes="typeNotificationStateChanged|typeWindowStateChanged" -->
+    <!-- 设置回馈给用户的方式，有语音播出和振动。可以配置一些TTS引擎，让它实现发音 -->
+    <!-- android:accessibilityFeedbackType="feedbackGeneric" -->
+    
+    <!-- android:accessibilityFlags="flagDefault" -->
+    <!-- 能够用AccessibilityService来遍历View层级 -->
+    <!-- android:canRetrieveWindowContent="true" -->
+    <!-- 开启辅助功能的介绍 -->
+    <!-- android:description="@string/desc" -->
+    <!-- 响应时间的设置 -->
+    <!-- android:notificationTimeout="100" -->
+    <!-- 指定响应某个应用的事件-->
+    <!-- android:packageNames="com.tencent.mm" -->
+    

@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="请开启【抢红包神器】辅助服务"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#CCCCCC" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="10dp"
+        android:text="开启“辅助服务”可自动进行微信抢红包，为了更好更快的抢红包，请务必开启【抢红包神器】辅助服务。"
+        android:textColor="#999999"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/open"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="7dp"
+        android:src="@mipmap/open" />
+
+</LinearLayout>
