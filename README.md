@@ -1,9 +1,9 @@
 # RedEnvelope
 ##抢红包助手
 ##运行效果图
-![图一](https://github.com/simplezhli/RedEnvelope/blob/master/image/Screenshot_2015-12-02-11-19-02.png)
-![图二](https://github.com/simplezhli/RedEnvelope/blob/master/image/Screenshot_2015-12-02-11-19-10.png)
-![图三](https://github.com/simplezhli/RedEnvelope/blob/master/image/Screenshot_2015-12-02-11-19-19.png)
+![图一](https://github.com/simplezhli/RedEnvelopeService/blob/master/image/Screenshot_2015-12-02-11-19-02.png)
+![图二](https://github.com/simplezhli/RedEnvelopeService/blob/master/image/Screenshot_2015-12-02-11-19-10.png)
+![图三](https://github.com/simplezhli/RedEnvelopeService/blob/master/image/Screenshot_2015-12-02-11-19-19.png)
 ##1.功能
 辅助抢红包，目前只支持微信抢红包，以后在添加其他方式。
 
@@ -18,7 +18,7 @@
 ##4.问题
 1.自动抢红包模式下无法进行聊天。
 
-2.最好是Android 4.4以上。
+2.最好是Android 4.4以上，否则会有问题。
 
 ##5.其他
 1.项目中加入了有米广告，可以无视。
