@@ -5,7 +5,7 @@
 ![图二](https://github.com/simplezhli/RedEnvelopeService/blob/master/image/Screenshot_2015-12-02-11-19-10.png)
 ![图三](https://github.com/simplezhli/RedEnvelopeService/blob/master/image/Screenshot_2015-12-02-11-19-19.png)
 ##1.功能
-辅助抢红包，目前只支持微信抢红包，以后在添加其他方式。
+辅助抢红包，目前支持微信和QQ抢红包，以后在添加其他方式。
 
 ##2.使用
 按照应用提示与使用帮助进行在、设置操作。

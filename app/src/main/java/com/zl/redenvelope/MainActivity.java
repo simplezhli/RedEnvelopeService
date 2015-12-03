@@ -6,6 +6,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.text.TextUtils;
@@ -111,7 +113,29 @@ public class MainActivity extends Activity {
 		// 调用Activity的addContentView函数
 
 		((Activity) MainActivity.this).addContentView(adView, layoutParams);
+		setSpotAd();
 	}
+
+	private void setSpotAd() {
+
+		// 插屏出现动画效果，0:ANIM_NONE为无动画，1:ANIM_SIMPLE为简单动画效果，2:ANIM_ADVANCE为高级动画效果
+		SpotManager.getInstance(this).setAnimationType(
+				SpotManager.ANIM_ADVANCE);
+		// 设置插屏动画的横竖屏展示方式，如果设置了横屏，则在有广告资源的情况下会是优先使用横屏图。
+		SpotManager.getInstance(this).setSpotOrientation(
+				SpotManager.ORIENTATION_PORTRAIT);
+		mHandler.sendEmptyMessageDelayed(0,3000);
+
+	}
+	private Handler mHandler = new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			// 展示插播广告，可以不调用loadSpot独立使用
+			SpotManager.getInstance(MainActivity.this).showSpotAds(MainActivity.this);
+
+			super.handleMessage(msg);
+		}
+	};
 
 
 

@@ -21,7 +21,7 @@
         android:layout_height="60dp"
         android:layout_marginBottom="7dp"
         android:layout_marginTop="10dp"
-        android:text="开启“辅助服务”可自动进行微信抢红包，为了更好更快的抢红包，请务必开启【抢红包神器】辅助服务。"
+        android:text="开启“辅助服务”可自动进行微信和QQ的抢红包，为了更好更快的抢红包，请务必开启【抢红包神器】辅助服务。"
         android:textColor="#999999"
         android:textSize="14sp" />
 

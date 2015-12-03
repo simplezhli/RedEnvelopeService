@@ -1,6 +1,7 @@
 package com.zl.redenvelope;
 
 import android.accessibilityservice.AccessibilityService;
+import android.accessibilityservice.AccessibilityServiceInfo;
 import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -29,7 +30,7 @@ public class RedEnvelopeService extends AccessibilityService {
 			if (!texts.isEmpty()) {
 				for (CharSequence text : texts) {
 					String content = text.toString();
-					if (content.contains("[微信红包]")) {
+					if (content.contains("[微信红包]")||content.contains("[QQ红包]")) {
 						// 模拟打开通知栏消息
 						if (event.getParcelableData() != null
 								&& event.getParcelableData() instanceof Notification) {
@@ -50,24 +51,50 @@ public class RedEnvelopeService extends AccessibilityService {
 
 		case AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED:// 界面内容改变调用
 		case AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED:// 界面状态变化调用
-
 			String className = event.getClassName().toString();
+			if(className == null){
+				return;
+			}
+
 			if (className.equals("com.tencent.mm.ui.LauncherUI")
-					|| className.equals("com.flamy.meizu.laucher.Laucher")) {// 消息列表和聊天界面，开始抢红包
+					|| className.equals("com.flamy.meizu.laucher.Laucher")) {// 微信消息列表和聊天界面，开始抢红包
 
 				getPacket();
 
-			} else if (className
-					.equals("com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyReceiveUI")) {// 拆红包界面
+			} else if (className.equals("com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyReceiveUI")) {// 微信拆红包界面
 
 				openPacket();// 开始打开红包
 
-			} else if ("com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyDetailUI"// 拆完红包后看详细的纪录界面
-			.equals(event.getClassName())) {
+			} else if (className.equals("com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyDetailUI")) {// 微信拆完红包后看详细的纪录界面
+
 				performGlobalAction(AccessibilityService.GLOBAL_ACTION_BACK);// 正常领取，到达详细页就返回上一页面。
+
+			}else if( className.equals("com.tencent.mobileqq.activity.SplashActivity")){// QQ消息列表和聊天界面，开始抢红包
+
+				openPacketQQ();
+
+			}else if(className.equals("cooperation.qwallet.plugin.QWalletPluginProxyActivity")){// QQ拆红包界面
+
+				performGlobalAction(AccessibilityService.GLOBAL_ACTION_BACK);
+
 			}
 			break;
 
+		}
+	}
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+	private void openPacketQQ() {
+		AccessibilityNodeInfo nodeInfo = getRootInActiveWindow();
+		if (nodeInfo != null) {
+			List<AccessibilityNodeInfo> list = nodeInfo
+					.findAccessibilityNodeInfosByText("点击拆开");
+			if (list.size() == 0) {
+				intent();
+				return;
+			}
+			for (AccessibilityNodeInfo n : list) {
+				n.getParent().performAction(AccessibilityNodeInfo.ACTION_CLICK);
+			}
 		}
 	}
 
@@ -161,6 +188,12 @@ public class RedEnvelopeService extends AccessibilityService {
 
 	@Override
 	protected void onServiceConnected() {
+		AccessibilityServiceInfo info = getServiceInfo();
+		info.eventTypes = AccessibilityEvent.TYPES_ALL_MASK;
+		info.feedbackType = AccessibilityServiceInfo.FEEDBACK_GENERIC;
+		info.notificationTimeout = 100;
+		info.packageNames = new String[]{"com.tencent.mm", "com.tencent.mobileqq"};
+		setServiceInfo(info);
 		super.onServiceConnected();
 		Toast.makeText(this, "抢红包服务开始", Toast.LENGTH_SHORT).show();
 

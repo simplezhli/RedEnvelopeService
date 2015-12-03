@@ -2,6 +2,6 @@
 
     <string name="app_name">抢红包神器</string>
     <string name="testaccessibility">accessibilityDemo</string>
-    <string name="desc">1.请点击右上角的开启/关闭按钮。\n\n2.开启该服务后，在收到微信红包消息时，会自动帮你抢红包。但是会影响正常聊天，不用时请关闭。\n\n3.如果出现失效，可以尝试先关闭后开启该服务。\n\n4.为保证程序运行，请保持手机不锁屏。\n\n提示：此应用不会侵害用户利益，请放心开启！</string>
+    <string name="desc">1.请点击右上角的开启/关闭按钮。\n\n2.开启该服务后，在收到微信或QQ红包消息时，会自动帮你抢红包。但是会影响正常聊天，不用时请关闭。\n\n3.如果出现失效，可以尝试先关闭后开启该服务。\n\n4.为保证程序运行，请保持手机不锁屏。\n\n提示：此应用不会侵害用户利益，请放心开启！</string>
 
 </resources>
