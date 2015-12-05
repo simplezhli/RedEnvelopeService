@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Intent sendIntent = new Intent();
 				sendIntent.setAction(Intent.ACTION_SEND);
-				sendIntent.putExtra(Intent.EXTRA_TEXT, "下载链接：https://github.com/simplezhli/RedEnvelopeService/blob/master/apk/app.apk");
+				sendIntent.putExtra(Intent.EXTRA_TEXT, "下载链接：https://raw.githubusercontent.com/simplezhli/RedEnvelopeService/master/apk/app.apk");
 				sendIntent.setType("text/plain");
 				startActivity(Intent.createChooser(sendIntent, getResources()
 						.getText(R.string.app_name)));
