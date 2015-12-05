@@ -82,7 +82,7 @@ public class RedEnvelopeService extends AccessibilityService {
 
 		}
 	}
-	@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+
 	private void openPacketQQ() {
 		AccessibilityNodeInfo nodeInfo = getRootInActiveWindow();
 		if (nodeInfo != null) {
@@ -101,7 +101,7 @@ public class RedEnvelopeService extends AccessibilityService {
 	/**
 	 * 到达拆红包界面，有“拆红包”字段则点击拆除，没有则返回（一般红包过期会没有此字段） 返回后又到达聊天界面，进入此界面判断，方便继续抢红包。
 	 */
-	@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+
 	private void openPacket() {
 		AccessibilityNodeInfo nodeInfo = getRootInActiveWindow();
 		if (nodeInfo != null) {
