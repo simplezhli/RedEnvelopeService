@@ -2,12 +2,10 @@ package com.zl.redenvelope;
 
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
-import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.PendingIntent.CanceledException;
 import android.content.Intent;
-import android.os.Build;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
@@ -100,20 +98,23 @@ public class RedEnvelopeService extends AccessibilityService {
 
 	/**
 	 * 到达拆红包界面，有“拆红包”字段则点击拆除，没有则返回（一般红包过期会没有此字段） 返回后又到达聊天界面，进入此界面判断，方便继续抢红包。
+	 * 注意：最新版微信已经没有“拆红包”字段，变为了一张图片上面是一个繁体的"开"字。
 	 */
 
 	private void openPacket() {
 		AccessibilityNodeInfo nodeInfo = getRootInActiveWindow();
 		if (nodeInfo != null) {
-			List<AccessibilityNodeInfo> list = nodeInfo
-					.findAccessibilityNodeInfosByText("拆红包");
-			if (list.size() == 0) {
-				performGlobalAction(AccessibilityService.GLOBAL_ACTION_BACK);
-				return;
-			}
-			for (AccessibilityNodeInfo n : list) {
-				n.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-			}
+//			List<AccessibilityNodeInfo> list = nodeInfo.
+//					findAccessibilityNodeInfosByText("null");
+//			if (list.size() == 0) {
+//				performGlobalAction(AccessibilityService.GLOBAL_ACTION_BACK);
+//				return;
+//			}
+//			for (AccessibilityNodeInfo n : list) {
+//				n.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+//			}
+			AccessibilityNodeInfo buttonKai = nodeInfo.getChild(3); //分析布局得出这个“开”字Button是子控件第四个，下标为3。
+			buttonKai.performAction(AccessibilityNodeInfo.ACTION_CLICK);
 		}
 
 	}
@@ -131,15 +132,17 @@ public class RedEnvelopeService extends AccessibilityService {
 	 * 此方法在是对界面进行判断，逐级返回，最终返回桌面，重新开始。
 	 * 
 	 * */
-	@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+
 	private void getPacket() {
 		AccessibilityNodeInfo nodeInfo = getRootInActiveWindow();
 		if (nodeInfo == null) {
-			Log.w(TAG, "rootWindow为空");
+			Log.e(TAG, "rootWindow为空");
+			intent();
 			return;
 		}
 		List<AccessibilityNodeInfo> list = nodeInfo
 				.findAccessibilityNodeInfosByText("领取红包");
+
 		if (list.isEmpty()) {
 			list = nodeInfo.findAccessibilityNodeInfosByText(ENVELOPE_TEXT_KEY);
 			if (list.size() == 0) {
@@ -156,6 +159,7 @@ public class RedEnvelopeService extends AccessibilityService {
 				AccessibilityNodeInfo parent = list.get(i).getParent();
 				if (parent != null) {
 					if (!isReceive) {
+						Log.e(TAG, list.size()+"");
 						parent.performAction(AccessibilityNodeInfo.ACTION_CLICK);
 						isReceive = true;
 						return;// 暂时支持一次领取一个，多个可能会有影响。（正常情况下足够）

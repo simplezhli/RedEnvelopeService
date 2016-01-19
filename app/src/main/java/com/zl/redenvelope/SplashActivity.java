@@ -23,7 +23,7 @@ public class SplashActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AdManager.getInstance(this).init("3f61afdbb758ca22", "0caef1e42fd1c6fe");
-		AdManager.getInstance(this).setEnableDebugLog(false);
+
 		// 第二个参数传入目标activity，或者传入null，改为setIntent传入跳转的intent
 		splashView = new SplashView(this, null);
 		// 设置是否显示倒数
