@@ -1,9 +1,9 @@
 # RedEnvelope
 ##抢红包助手
 ##运行效果图
-![图一](https://github.com/simplezhli/RedEnvelopeService/blob/master/image/Screenshot_2015-12-02-11-19-02.png)
-![图二](https://github.com/simplezhli/RedEnvelopeService/blob/master/image/Screenshot_2015-12-02-11-19-10.png)
-![图三](https://github.com/simplezhli/RedEnvelopeService/blob/master/image/Screenshot_2015-12-02-11-19-19.png)
+
+<img src="/image/Screenshot_2015-12-02-11-19-02.png" width="280px"/> <img src="/image/Screenshot_2015-12-02-11-19-10.png.jpg" width="280px"/><img src="/image/Screenshot_2015-12-02-11-19-19.png" width="280px"/>
+
 ##1.功能
 辅助抢红包，目前支持微信和QQ抢红包，以后在添加其他方式。
 
